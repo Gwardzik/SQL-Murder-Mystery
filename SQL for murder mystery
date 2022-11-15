@@ -1,0 +1,67 @@
+
+
+SELECT * 
+FROM crime_scene_report
+WHERE city = 'SQL City';
+
+//------------------------------------------------------------------------------------------------------------------------
+
+SELECT * 
+FROM person
+WHERE address_street_name = 'Northwestern Dr'
+ORDER BY address_number;
+
+//------------------------------------------------------------------------------------------------------------------------
+
+SELECT * 
+FROM person
+WHERE address_street_name = 'Franklin Ave'AND name LIKE 'Annabel%';
+
+//------------------------------------------------------------------------------------------------------------------------
+
+SELECT
+	transcript,
+	name
+FROM interview
+JOIN person on person.id = interview.person_id
+WHERE id IN(16371, 14887);
+
+//------------------------------------------------------------------------------------------------------------------------
+
+SELECT *  
+FROM get_fit_now_member
+WHERE membership_status = 'gold' AND Id LIKE('48Z%');
+
+//------------------------------------------------------------------------------------------------------------------------
+
+SELECT *  
+FROM get_fit_now_check_in
+WHERE check_in_date LIKE '%0109';
+
+//------------------------------------------------------------------------------------------------------------------------
+
+SELECT * 
+FROM person
+WHERE id IN ('28819','67318');
+
+//------------------------------------------------------------------------------------------------------------------------
+
+SELECT * 
+FROM interview
+WHERE person_id ='67318';
+
+//------------------------------------------------------------------------------------------------------------------------
+
+SELECT name, car_model, height, f.event_id, f.date 
+FROM person AS p
+JOIN drivers_license AS d ON p.license_id = d.id
+JOIN facebook_event_checkin AS f ON p.id = f.person_id
+WHERE car_make = 'Tesla' and car_model = 'Model S' and hair_color = 'red' 
+		AND height BETWEEN 65 AND 67
+GROUP By name
+HAVING COUNT(event_id) =3;
+
+//------------------------------------------------------------------------------------------------------------------------
+
+Congrats, you found the brains behind the murder! Everyone in SQL City hails you as the greatest SQL detective of all time. Time to break out the champagne!
+
